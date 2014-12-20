@@ -1,10 +1,6 @@
 {% extends 'template.html' %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
-<form methods ='POST'>
-	{{ form.name.label }} {{form.name() }}
-	{{ form.submit() }}
-</form>
 
 {% block title %}Peyton{% endblock %}
 
