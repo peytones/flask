@@ -1,0 +1,6 @@
+{% extends "template.html" %}
+<form methods ='POST'>
+	{{ form.name.label }} {{form.name() }}
+	{{ form.submit() }}
+</form>
+
