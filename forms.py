@@ -1,11 +1,11 @@
+from flask.ext.bootstrap import Bootstrap
 from flask import Flask, render_template
 from flask.ext.wtf import Form
 from wtforms import StringField, SubmitField
 from wtforms.validators import Required
-
+ 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hard to guess string'
-
 class NameForm(Form):
 	name= StringField('What is your name?', validators=[Required()])
 	submit = SubmitField('Submit')
@@ -18,5 +18,6 @@ def index():
 		name=form.name.data
 		form.name.data=''
 	return render_template('form.html',form=form,name=name)
+bootstrap=Bootstrap(app)
 if __name__ == "__main__":
 	app.run(debug=True)
