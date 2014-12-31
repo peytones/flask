@@ -17,6 +17,6 @@ def index():
 	if form.validate_on_submit():
 		name=form.name.data
 		form.name.data=''
-	return render_template('base4.html',form=form,name=name)
+	return render_template('template.html',form=form,name=name)
 if __name__ == "__main__":
 	app.run(debug=True)
