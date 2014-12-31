@@ -1,28 +1,17 @@
 import os
+from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.script import Shell, Manager
 from flask.ext.bootstrap import Bootstrap
 from flask import Flask, render_template, session, redirect, url_for, flash
 from flask.ext.wtf import Form
 from wtforms import StringField, SubmitField
 from wtforms.validators import Required
-<<<<<<< HEAD:webapp.py
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.mail import Mail
-=======
 from flask.ext.sqlalchemy import SQLAlchemy 
-from flask.ext.migrate import Migrate, MigrateCommand
->>>>>>> 00c5ec96b43f06d5ae80328102f328989700604a:webapp.py
 basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] =\
-	'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+	'sqlite:///' + os.path.join(basedir, 'data2.sqlite')
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN']= True
-app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-mail = Mail(app)
 manager= Manager(app)
 db=SQLAlchemy(app)
 app.config['SECRET_KEY']= 'hardtoguess'
@@ -41,7 +30,7 @@ class User(db.Model):
 	id=db.Column(db.Integer,primary_key=True)
 	username=db.Column(db.String(64), unique=True, index=True)
 	def _repr_(self):
-		return '<User %r>' % self.username
+		return '<User %r>' % self.username 
 @app.route('/', methods=['GET', 'POST'])
 def index():
 	form = NameForm()
@@ -49,7 +38,7 @@ def index():
 		user=User.query.filter_by(username=form.name.data).first()
 		if user is None:
 			user= User(username=form.name.data)
-			db.session.add(user)
+			db.session.add(user)	
 			session['known']=False
 		else:
 			session['known']=True
