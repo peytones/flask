@@ -16,7 +16,7 @@ Tempita==0.5.2
 Twisted-Core==14.0.2
 Twisted-Web==14.0.2
 WTForms==2.0.1
-Werkzeug==0.9.6
+Werkzeug==0.15.3
 alembic==0.7.2
 apt-xapian-index==0.46
 argparse==1.2.1
