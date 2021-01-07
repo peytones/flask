@@ -40,7 +40,7 @@ httplib2==0.9
 idna==0.9
 itsdangerous==0.24
 lockfile==0.8
-lxml==3.3.6
+lxml==4.6.2
 mercurial==3.1.1
 oauthlib==0.6.1
 oneconf==0.3.7
